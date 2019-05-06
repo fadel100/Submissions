@@ -18,3 +18,9 @@
 
 * 2016-2017 Information Technology and Computing at AOU
 * 2014-2016 Networks and Systems st ITI bir hassan
+
+---
+### Hobbies:
+
+* Gaming  
+* listening to music
