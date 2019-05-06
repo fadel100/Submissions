@@ -24,3 +24,5 @@
 
 * Gaming  
 * listening to music
+
+![image that represents me](https://github.com/fadel100/Submissions/blob/master/Exercises/Git-Trial/cv-picture1.jpg?raw=true)
