@@ -1,0 +1,105 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+
+body {
+    background-color: gray;
+
+}
+
+.main-div {
+    width: 900px;
+    background-color: rgb(8, 46, 70);
+    max-width: 100%;
+    margin: 15px auto;
+}
+
+
+header  {
+    width: 100%;
+    height: 300px;
+    background-color: rgb(81, 81, 110);
+
+}
+
+.topMenu {
+    list-style-type: none;
+    background-color: rgb(113, 138, 138);
+    width: 900px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.topMenu li {
+    float: left;
+    color: rgb(212, 212, 163);
+    text-align: center;
+    width: 130px;
+    background-color: rgb(52, 105, 105);
+    padding: 10px;
+    display: block;
+     
+}
+
+.block-left {
+    float: left;
+    width: 30%;
+    padding-bottom: 50px;
+}
+
+.left-menu {
+    margin-left: 20px;
+
+}
+
+.block {
+    margin-left: 20px;
+    margin-right: 60px;
+    padding-bottom: 50px;
+}
+
+.block-right {
+    float: right;
+    width: 70%;
+    padding-bottom: 50px;
+}
+
+.description {
+    padding-bottom: 50px;
+    margin-right: 10px;
+    text-align: justify;
+}
+
+.subscription {
+    float: left;
+    width: 45%;
+    margin-right: 40px;
+    height: 300px;
+    text-align: justify;
+
+}
+
+.otherServices {
+    height: 300px;
+    text-align: justify;
+    border-left: 2px solid grey;
+    padding-left: 40px;
+    width: 45%;
+    float: right;
+    margin-right: 10px;
+    margin-top: -300px;
+}
+
+.ContactUs {
+    padding: 40px 41%;
+
+}
+
+
+footer {
+    text-align-last: center;
+    border-top: 2px solid gray;
+    padding: 10px 0;
+}
