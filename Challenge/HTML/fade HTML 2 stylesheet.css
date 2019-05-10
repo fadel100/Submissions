@@ -1,0 +1,38 @@
+
+body{
+    background-color: aqua;
+}
+
+
+nav ul li{
+    float: left;
+    margin: 10px;
+    color: blueviolet;
+    padding: 10px;
+}
+
+
+div{
+    clear: left;
+   
+}
+
+
+div ul li{
+
+    color: blueviolet;
+}
+
+img{
+    max-width: 550px;
+    height: auto;
+}
+
+
+footer{
+    text-align: center
+}
+
+
+
+
