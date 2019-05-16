@@ -1,0 +1,223 @@
+header{
+ 
+}
+header div{
+  width: 200px;
+  margin: 0 auto;
+}
+ 
+hgroup h1, hgroup h2 {
+  color: blue;
+}
+figure img{ 
+  display: none;
+}
+
+
+
+.content{
+    margin: 0 50px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+    "About ."
+    ". Competencies"
+    "Experiences ."
+    ". Education"
+    "Hobbies ."
+    ". contacts";
+   
+}
+
+#about{
+    grid-area: About;
+     
+}
+#about h3{
+    border-bottom: dashed 1px ;
+}
+#about h3::before{
+    content: ' \25CF';
+  font-size: 30px;
+  color: blue;
+}
+
+
+
+
+
+
+
+#competencies{
+    grid-area: Competencies;
+     
+}
+#competencies h3{
+    border-bottom: dashed 1px ;
+}
+#competencies h3::before{
+    content: ' \25CF';
+  font-size: 30px;
+  color: blue;
+}
+.skills-primary::before {
+    content: 'Main';
+  }
+.skills-secondary::before {
+    content: 'Other';
+  }
+.skill {
+    background-color: #cccccc;
+    border: 2px solid #fff;
+    width: 80%;
+  }
+  .skill[data-skill='5'] span{
+      background-color: blue;
+      width: 50%;
+      display: block;
+      color: white;
+      border: 2px solid #cccccc;
+  }
+.skill[data-skill='3'] span{
+    background-color: blue;
+    width: 30%;
+    display: block;
+    color: white;
+    border: 2px solid #cccccc;
+}
+.skill[data-skill='9'] span{
+    background-color: blue;
+    width: 90%;
+    display: block;
+    color: white;
+    border: 2px solid #cccccc;
+}
+.skill[data-skill='1'] span{
+    background-color: blue;
+    width: 10%;
+    display: block;
+    color: white;
+    border: 2px solid #cccccc;
+}
+.skill[data-skill='5'] span{
+    background-color: blue;
+    width: 50%;
+    display: block;
+    color: white;
+    border: 2px solid #cccccc;
+}
+.skill[data-skill='7'] span{
+    background-color: blue;
+    width: 70%;
+    display: block;
+    color: white;
+    border: 2px solid #cccccc;
+}
+  
+
+
+
+
+
+
+#experiences{
+    grid-area: Experiences;
+    
+}
+#experiences h3{
+    border-bottom: dashed 1px ;
+}
+#experiences h3::before{
+    content: ' \25CF';
+  font-size: 30px;
+  color: blue;
+}
+.experience-type::after {
+    content: '@';
+    color: red;
+  }
+h4 span{
+    color: red;
+    font-weight: 100;
+}
+.experience-details {
+    color: #A4A4AC;
+  }
+.experience-date-separator {
+    color: red;
+  }
+
+
+
+#education{
+    grid-area: Education;
+     
+}
+#education h3{
+    border-bottom: dashed 1px ;
+}
+#education h3::before{
+    content: ' \25CF';
+  font-size: 30px;
+  color: blue;
+}
+
+
+
+
+#hobbies{
+    grid-area: Hobbies;
+}
+#hobbies h3{
+    border-bottom: dashed 1px ;
+}
+#hobbies h3::before{
+    content: ' \25CF';
+  font-size: 30px;
+  color: blue;
+}
+
+ 
+#contact{
+  grid-area: contacts;
+  display: flex;
+  flex-direction: column;
+}
+.contact{
+  display: flex;
+}
+
+#contact h3{
+  border-bottom: dashed 1px ;
+   
+}
+.contact .contact-type{
+   
+}
+.contact .contact-value{
+   
+}
+#contact h3::before{
+  content: ' \25CF';
+font-size: 30px;
+color: blue;
+}
+ 
+
+ 
+
+  @media (max-width: 800px) {
+    .content {
+      grid-template-columns: 80%;
+    grid-template-areas:
+    "About "
+    " Competencies"
+    "Experiences "
+    " Education"
+    "Hobbies "
+    "contacts";
+    }
+     
+
+
+}
