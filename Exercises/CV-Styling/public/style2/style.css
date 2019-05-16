@@ -1,0 +1,284 @@
+#\#wrapper{
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  
+  
+  header{
+      border-bottom: 1px solid black;
+  }
+  hgroup h2{
+      display: none;
+  }
+  figure{
+      position: absolute;
+      right: 50px;
+      top: 20px;
+  }
+  figure img {
+      width: 150px;
+      transform: rotate(-13deg);
+    }
+  
+  
+  
+  #about h3{
+        display: none;
+    }
+  #about p{
+      width: 70%;
+  }
+  #about {
+      margin-bottom: 60px;
+  }
+  
+  
+  
+  
+  
+  
+  
+  #competencies {
+      display: grid;
+      grid-template-areas: "Competencies primary"
+                          " . secondary";
+      grid-template-columns: 150px 1fr;
+  }
+  
+  #competencies h3{
+      grid-area: Competencies;
+       
+      
+  }
+  .skills-primary{
+      grid-area: primary;
+      display: flex;
+      align-self: center;
+      border-left: black solid;
+      
+  }
+  .skills-secondary{
+      grid-area: secondary;
+      display: flex;
+      border-left: black solid;
+  }  
+  .skill {
+      color: white;
+      background-color: gray;
+      padding: 7px 7px;
+      margin: 1px 3px;
+      width: 130px;
+    }
+    .skill[data-skill='1']::after {
+      content: '\22C6';
+      color: white;
+      font-size: 30px;
+    }
+     .skill[data-skill='3']::after {
+      content: '\22C6\22C6';
+      color: #fff;
+       font-size: 30px;
+    }
+    .skill[data-skill='5']::after {
+      content: '\22C6\22C6\22C6';
+      color: white;
+      font-size: 30px;
+       
+    }
+    .skills-secondary .skill[data-skill='5']::after {
+      content: '\22C6\22C6\22C6';
+      color: #fff;
+      font-size: 20px;
+    }
+    .skill[data-skill='7']::after {
+      content: '\22C6\22C6\22C6\22C6';
+      color: #fff;
+      font-size: 20px;
+    }
+    .skills-secondary .skill[data-skill='9']::after {
+      content: '\22C6\22C6\22C6\22C6\22C6';
+      color: #fff;
+      font-size: 20px;
+    }
+  
+  
+  
+  
+    #experiences{
+        display: grid;
+        grid-template-areas: "experiences primary"
+                          " . secondary";
+      grid-template-columns: 150px 1fr;
+      margin-top: 30px;
+    }
+  #experiences div:nth-child(2){
+      grid-area: primary;
+      border-left: black solid;
+      padding-left: 10px;
+  }
+  #experiences div:nth-child(3){
+      grid-area: secondary;
+      border-left: black solid;
+      padding-left: 10px;
+  }
+  .experience-institution{
+      display:none;
+  }
+  .experience{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+  }
+  .experience-details{
+      align-self: center;
+  }
+  
+  
+  
+  
+  
+  #education{
+      display: grid;
+      grid-template-areas: "experiences primary"
+                        " . secondary";
+    grid-template-columns: 150px 1fr;
+    margin-top: 30px;
+  }
+  #education div:nth-child(2){
+      grid-area: primary;
+      border-left: black solid;
+      padding-left: 10px;
+  }
+  #education div:nth-child(3){
+      grid-area: secondary;
+      border-left: black solid;
+      padding-left: 10px;
+  }
+  
+  
+  
+  
+  
+  
+  #hobbies{
+      display: grid;
+     
+    grid-template-columns: 150px 1fr;
+    margin-top: 30px;
+  }
+  #hobbies ul{
+      border-left: black solid;
+  }
+  
+  
+  
+  
+  
+  
+  
+  
+  #contact h3, .contact-type, .contact-value {
+      display: none;
+    }
+  .contact-email {
+      background-image: url('../images/email.png');
+      background-position: center;
+      background-size: cover; 
+      width: 80px;
+      height: 80px;    
+    }
+    .contact-phone {
+      background-image: url('../images/phone.png');
+      background-position: center;
+      background-size: cover;
+      width: 80px;
+      height: 80px;   
+    }
+    .contact-github {
+      background-image: url('../images/github.png');
+      background-position: center;
+      background-size: cover;
+      width: 80px;
+      height: 80px;
+    }
+    .contact-facebook {
+      background-image: url('../images/facebook.png');
+      background-position: center;
+      background-size: cover;
+      width: 80px;
+      height: 80px;
+    }
+  .contacts{
+      display: flex;
+      justify-content: center
+  }
+    
+  
+  
+  
+  @media (max-width: 750px) {
+  
+      figure{
+          display:none;
+      }
+  
+  
+      #competencies {
+          display: grid;
+          grid-template-areas: "Competencies"
+                                  " primary"
+                              " secondary";
+          grid-template-columns:  1fr;
+      }    
+  
+      #competencies h3{
+          text-decoration: underline;
+      }
+      #experiences{
+          display: grid;
+          grid-template-areas: "experiences"
+                              " primary"
+                            " secondary";
+        grid-template-columns: 1fr;
+        margin-top: 30px;
+      }
+  
+      #experiences h3{
+          text-decoration: underline;
+      }
+  
+      #education{
+          display: grid;
+          grid-template-areas: "experiences "
+                                  "primary"
+                            "  secondary";
+        grid-template-columns: 1fr;
+        margin-top: 30px;
+      }
+      #education h3{
+          text-decoration: underline;
+      }
+  
+  
+      #hobbies{
+          display: grid;
+         
+        grid-template-columns: 1fr;
+        margin-top: 30px;
+      }
+      #hobbies h3{
+          text-decoration: underline;
+      }
+  
+  
+       
+        .contact-facebook, 
+        .contact-github, 
+        .contact-phone,
+        .contact-email{
+          width: 50px;
+          height: 50px;
+        }
+  
+  }
