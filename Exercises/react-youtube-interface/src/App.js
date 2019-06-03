@@ -1,22 +1,44 @@
-import React, {Component} from 'react';
+import React from 'react';
+import SearchBar from './Component/Searchbar';
+import youtube from './apis/youtube';
+import VideoList from './Component/VideoList';
+import VideoDetail from './Component/VideoDetail';
 
-import './App.css';
-import Test from './Component/Test';
-
-class App extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {}
-
+class App extends React.Component {
+    state = {
+        videos: [],
+        selectedVideo: null
+    }
+    handleSubmit = async (termFromSearchBar) => {
+        const response = await youtube.get('/search', {
+            params: {
+                q: termFromSearchBar
+            }
+        })
+        this.setState({
+            videos: response.data.items
+        })
+    };
+    handleVideoSelect = (video) => {
+        this.setState({selectedVideo: video})
     }
 
     render() {
         return (
-            <div className="App">
-                <Test/>
+            <div className='ui container' style={{marginTop: '1em'}}>
+                <SearchBar handleFormSubmit={this.handleSubmit}/>
+                <div className='ui grid'>
+                    <div className="ui row">
+                        <div className="eleven wide column">
+                            <VideoDetail video={this.state.selectedVideo}/>
+                        </div>
+                        <div className="five wide column">
+                            <VideoList handleVideoSelect={this.handleVideoSelect} videos={this.state.videos}/>
+                        </div>
+                    </div>
+                </div>
             </div>
-        );
+        )
     }
 }
 
