@@ -1,0 +1,142 @@
+Basic Queries 
+
+1
+SELECT name FROM students
+-- Result: 6 rows returned in 6ms
+
+
+2
+SELECT * FROM students WHERE age > 30
+-- Result: 2 rows returned in 13ms
+ 
+
+3
+SELECT * FROM students WHERE age = 30 AND Gender = "F"
+-- Result: 0 rows returned in 3ms
+ 
+ 
+4
+SELECT Points FROM students WHERE name = "Alex"
+-- Result: 1 rows returned in 17ms
+ 
+ 
+5
+INSERT INTO students VALUES (7, "Fadel", 55 , "M", 999)
+-- Result: query executed successfully. Took 9ms, 1 rows affected
+ 
+ 
+ 
+6
+UPDATE students
+SET Points = 301
+where id = 2
+-- Result: query executed successfully. Took 0ms, 1 rows affected
+ 
+ 
+ 
+7
+UPDATE students
+SET Points = 111
+where id = 1
+-- Result: query executed successfully. Took 0ms, 1 rows affected
+
+
+*********************************************************************
+*********************************************************************
+*********************************************************************
+
+
+1
+INSERT INTO graduates (Name, Age, Gender, Points)
+SELECT Name, Age, Gender, Points FROM students
+WHERE name = "Layal"
+-- Result: query executed successfully. Took 0ms, 1 rows affected
+
+
+2
+UPDATE graduates
+SET Graduation = "08/09/2018"
+where name = "Layal"
+-- Result: query executed successfully. Took 0ms, 1 rows affected
+
+
+3
+DELETE FROM students
+WHERE id = 4
+-- Result: query executed successfully. Took 0ms, 1 rows affected
+
+*******************************************************************
+*******************************************************************
+*******************************************************************
+
+
+Joins
+
+
+1
+SELECT employees.Name, employees.Company, companies.Date
+FROM employees
+INNER JOIN companies 
+ON employees.ID=companies.ID;
+-- Result: 4 rows returned in 8ms
+
+
+2
+SELECT employees.Name, companies.Date
+FROM employees
+INNER JOIN companies 
+ON employees.ID=companies.ID
+WHERE companies.Date < 2000
+-- Result: 1 rows returned in 8ms
+
+
+
+3
+SELECT employees.Name, employees.Role, companies.Name
+FROM employees
+INNER JOIN companies 
+ON employees.ID=companies.ID
+WHERE employees.Role = "Graphic Designer"
+-- Result: 1 rows returned in 18ms
+
+
+
+*******************************************************************
+*******************************************************************
+*******************************************************************
+
+
+Count & Filter
+
+1
+SELECT name, max(Points) 
+FROM students
+-- Result: 1 rows returned in 6ms
+
+
+2
+SELECT avg(Points)
+FROM Students
+-- Result: 1 rows returned in 8ms
+
+
+3
+SELECT count(*)
+FROM students
+WHERE points=500
+-- Result: 1 rows returned in 2ms
+
+
+4
+SELECT Name 
+FROM Students
+WHERE Name LIKE "%s%"
+-- Result: 2 rows returned in 4ms
+
+
+5
+SELECT Name
+FROM Students
+ORDER BY Points DESC
+-- Result: 6 rows returned in 9ms
+
