@@ -41,11 +41,17 @@ function onDataReceived(text) {
     hello();
   }
   else if(text === 'help\n'){
-    console.log('quit\n'+'hello\n')
+    help();
   }
   else
     unknownCommand(text);
   
+}
+
+/*a new command, "help", that lists all the possible commands
+*/
+function help(){
+  console.log('quit\n'+'hello\n');
 }
 
 
