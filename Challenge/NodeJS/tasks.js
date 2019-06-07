@@ -74,7 +74,8 @@ function unknownCommand(c){
  * @returns {void}
  */
 function hello(theText){
-  console.log(theText.join(" "))
+  
+  console.log(theText.join(" ").replace("\n","")+"!")
 }
 
 
