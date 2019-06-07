@@ -40,9 +40,12 @@ function onDataReceived(text) {
   else if(text === 'hello\n'){
     hello();
   }
-  else{
-    unknownCommand(text);
+  else if(text === 'help\n'){
+    console.log('quit\n'+'hello\n')
   }
+  else
+    unknownCommand(text);
+  
 }
 
 
