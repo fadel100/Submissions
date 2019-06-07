@@ -69,7 +69,7 @@ function unknownCommand(c){
 
 
 /**
- * Says hello
+ * Says hello plus the whole sentence plus "!" 
  *
  * @returns {void}
  */
