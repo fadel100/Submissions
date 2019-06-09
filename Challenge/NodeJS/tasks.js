@@ -98,6 +98,12 @@ function remove(removeFunctionInput, text){
   if(text === 'remove\n'){
     listArray.pop();
   }else{
+    if(removeFunctionInput[1] <0 || removeFunctionInput[1] > listArray.length){
+      console.log("error,this task doesn't exist");
+      // so it exit the function and does not execute the next instruction
+      return;
+    }
+     
     listArray.splice(removeFunctionInput[1]-1, 1);
   }
   
