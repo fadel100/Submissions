@@ -42,6 +42,8 @@ function onDataReceived(text) {
 
   var addFunctionInput = text.split(" ");
 
+  var removeFunctionInput = text.split(" ");
+
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
@@ -56,6 +58,9 @@ function onDataReceived(text) {
   }
   else if(addFunctionInput[0] === 'add' || text === 'add\n'){
     add(addFunctionInput, listArray);
+  }
+  else if(removeFunctionInput[0] === 'remove' || text === 'remove\n'){
+    remove(removeFunctionInput, text);
   }
   else
     unknownCommand(text);
@@ -86,6 +91,15 @@ function add(addFunctionInput, listArray){
  
 }
 
+
+function remove(removeFunctionInput, text){
+  if(text === 'remove\n'){
+    listArray.pop();
+  }else{
+    listArray.splice(removeFunctionInput[1]-1, 1);
+  }
+  
+}
 
 
 /*a new command, "help", that lists all the possible commands
