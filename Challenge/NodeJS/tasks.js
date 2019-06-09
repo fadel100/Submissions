@@ -33,8 +33,15 @@ function startApp(name){
  * @param  {string} text data typed by the user
  * @returns {void}
  */
+
+ 
+
 function onDataReceived(text) {
+
   var arrayString = text.split(" ");
+
+  var addFunctionInput = text.split(" ");
+
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
@@ -45,7 +52,10 @@ function onDataReceived(text) {
     help();
   }
   else if(text === 'list\n'){
-    list();
+    list(listArray);
+  }
+  else if(addFunctionInput[0] === 'add' || text === 'add\n'){
+    add(addFunctionInput, listArray);
   }
   else
     unknownCommand(text);
@@ -53,19 +63,28 @@ function onDataReceived(text) {
 }
 
 
-function list(){
-  var listArray=[
-    "get this thing",
-    "get the other thing",
-    "get anything"
-  ]
-  for(var i = 0; i<listArray.length; i++){
-    console.log(listArray[i]);
+var listArray=[
+  "get this thing",
+  "get the other thing",
+  "get anything"
+];
+
+function list(theList){
+ 
+  for(var i = 0; i<theList.length; i++){
+    console.log(theList[i]);
   }
 }
 
 
-
+function add(addFunctionInput, listArray){
+   if(addFunctionInput[1]){
+  addFunctionInput.shift();
+    
+  listArray.push(addFunctionInput.join(" ").replace("\n", ""));
+   }else console.log("error, empty input, please add something")
+ 
+}
 
 
 
