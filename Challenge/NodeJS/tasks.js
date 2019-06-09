@@ -38,19 +38,15 @@ function startApp(name){
 
 function onDataReceived(text) {
 
-  var arrayString = text.split(" ");
 
-  var addFunctionInput = text.split(" ");
+  var userInput = text.split(" ");
 
-  var removeFunctionInput = text.split(" ");
-
-  var editFunctionInput = text.split(" ");
 
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
-  else if(arrayString[0] === 'hello' || text === 'hello\n'){
-    hello(arrayString);
+  else if(userInput[0] === 'hello' || text === 'hello\n'){
+    hello(userInput);
   }
   else if(text === 'help\n'){
     help();
@@ -58,14 +54,20 @@ function onDataReceived(text) {
   else if(text === 'list\n'){
     list(listArrayOfObjects);
   }
-  else if(addFunctionInput[0] === 'add' || text === 'add\n'){
-    add(addFunctionInput, listArrayOfObjects);
+  else if(userInput[0] === 'add' || text === 'add\n'){
+    add(userInput, listArrayOfObjects);
   }
-  else if(removeFunctionInput[0] === 'remove' || text === 'remove\n'){
-    remove(removeFunctionInput, text);
+  else if(userInput[0] === 'remove' || text === 'remove\n'){
+    remove(userInput, text);
   }
-  else if(editFunctionInput[0] === 'edit' || text === 'edit\n'){
-    edit(editFunctionInput, text);
+  else if(userInput[0] === 'edit' || text === 'edit\n'){
+    edit(userInput, text);
+  }
+  else if(userInput[0] === 'check' || text === 'check\n'){
+    check(userInput, text);
+  }
+  else if(userInput[0] === 'uncheck' || text === 'uncheck\n'){
+    uncheck(userInput, text);
   }
   else
     unknownCommand(text);
@@ -104,12 +106,12 @@ function list(theList){
 }
 
 // add a task to list of tasks
-function add(addFunctionInput, listArray){
-   if(addFunctionInput[1]){
-  addFunctionInput.shift();
+function add(userInput, listArray){
+   if(userInput[1]){
+    userInput.shift();
     
   listArray.push({
-    task: addFunctionInput.join(" ").replace("\n", ""),
+    task: userInput.join(" ").replace("\n", ""),
     done: false
     });
    }else console.log("error, empty input, please add something")
@@ -117,40 +119,62 @@ function add(addFunctionInput, listArray){
 }
 
 // remove a task from the list of tasks
-function remove(removeFunctionInput, text){
+function remove(userInput, text){
   if(text === 'remove\n'){
     listArrayOfObjects.pop();
   }else{
-    if(removeFunctionInput[1] <0 || removeFunctionInput[1] > listArrayOfObjects.length){
+    if(userInput[1] <0 || userInput[1] > listArrayOfObjects.length){
       console.log("error,this task doesn't exist");
       // so it exit the function and does not execute the next instruction
       return;
     }
      
-    listArrayOfObjects.splice(removeFunctionInput[1]-1, 1);
+    listArrayOfObjects.splice(userInput[1]-1, 1);
   }
   
 }
 
 // edit tasks
-function edit(editFunctionInput, text){
+function edit(userInput, text){
   if(text === 'edit\n'){
     console.log("error, edit command is empty")
   }
   // parse the string into an intenger then check if it is a number
-  else if(isNaN(parseInt(editFunctionInput[1]))){
-    editFunctionInput.shift();
-    listArrayOfObjects.splice(listArrayOfObjects.length-1,1,{task: editFunctionInput.join(" ").replace("\n", ""), done: false});
+  else if(isNaN(parseInt(userInput[1]))){
+    userInput.shift();
+    listArrayOfObjects.splice(listArrayOfObjects.length-1,1,{task: userInput.join(" ").replace("\n", ""), done: false});
   }
   else{
      
-    var whichTaskToEdit = editFunctionInput[1];
+    var whichTaskToEdit = userInput[1];
    
-    editFunctionInput.shift();
-    editFunctionInput.shift();
+    userInput.shift();
+    userInput.shift();
     
-    listArrayOfObjects.splice(whichTaskToEdit-1,1,{task: editFunctionInput.join(" ").replace("\n", ""), done: false})
+    listArrayOfObjects.splice(whichTaskToEdit-1,1,{task: userInput.join(" ").replace("\n", ""), done: false})
   }
+}
+
+
+function check(userInput, text){
+  if(text === 'check\n'){
+    console.log("error, add the # of the task u want to check")
+  }else{
+    if(!listArrayOfObjects[userInput[1]-1].done)
+    listArrayOfObjects[userInput[1]-1].done = !listArrayOfObjects[userInput[1]-1].done
+  }
+
+}
+
+
+function uncheck(userInput, text){
+  if(text === 'uncheck\n'){
+    console.log("error, add the # of the task u want to uncheck")
+  }else{
+    if(listArrayOfObjects[userInput[1]-1].done)
+    listArrayOfObjects[userInput[1]-1].done = !listArrayOfObjects[userInput[1]-1].done
+  }
+ 
 }
 
 
