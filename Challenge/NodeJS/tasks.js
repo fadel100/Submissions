@@ -44,6 +44,8 @@ function onDataReceived(text) {
 
   var removeFunctionInput = text.split(" ");
 
+  var editFunctionInput = text.split(" ");
+
   if (text === 'quit\n' || text === 'exit\n') {
     quit();
   }
@@ -61,6 +63,9 @@ function onDataReceived(text) {
   }
   else if(removeFunctionInput[0] === 'remove' || text === 'remove\n'){
     remove(removeFunctionInput, text);
+  }
+  else if(editFunctionInput[0] === 'edit' || text === 'edit\n'){
+    edit(editFunctionInput, text);
   }
   else
     unknownCommand(text);
@@ -107,6 +112,27 @@ function remove(removeFunctionInput, text){
     listArray.splice(removeFunctionInput[1]-1, 1);
   }
   
+}
+
+// edit tasks
+function edit(editFunctionInput, text){
+  if(text === 'edit\n'){
+    console.log("error, edit command is empty")
+  }
+  // parse the string into an intenger then check if it is a number
+  else if(isNaN(parseInt(editFunctionInput[1]))){
+    editFunctionInput.shift();
+    listArray.splice(listArray.length-1,1,editFunctionInput.join(" "));
+  }
+  else{
+     
+    var whichTaskToEdit = editFunctionInput[1];
+   
+    editFunctionInput.shift();
+    editFunctionInput.shift();
+    
+    listArray.splice(whichTaskToEdit-1,1,editFunctionInput.join(" ").replace("\n", ""))
+  }
 }
 
 
