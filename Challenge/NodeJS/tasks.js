@@ -56,10 +56,10 @@ function onDataReceived(text) {
     help();
   }
   else if(text === 'list\n'){
-    list(listArray);
+    list(listArrayOfObjects);
   }
   else if(addFunctionInput[0] === 'add' || text === 'add\n'){
-    add(addFunctionInput, listArray);
+    add(addFunctionInput, listArrayOfObjects);
   }
   else if(removeFunctionInput[0] === 'remove' || text === 'remove\n'){
     remove(removeFunctionInput, text);
@@ -73,18 +73,33 @@ function onDataReceived(text) {
 }
 
 // the list of tasks with default values
-var listArray=[
-  "get this thing",
-  "get the other thing",
-  "get anything"
-];
+
+var listArrayOfObjects= [
+  {
+    task: "get this thing",
+    done: false
+  },
+  {
+    task: "get the other thing",
+    done: true
+  },
+  {
+    task: "get anything",
+    done: false
+  }
+]
 
 
 // print out the list of tasks
 function list(theList){
  
   for(var i = 0; i<theList.length; i++){
-    console.log(theList[i]);
+    if(theList[i].done){
+      console.log("[✓] "+theList[i].task);
+    }else{
+      console.log("[ ] "+theList[i].task);
+    }
+     
   }
 }
 
@@ -93,7 +108,10 @@ function add(addFunctionInput, listArray){
    if(addFunctionInput[1]){
   addFunctionInput.shift();
     
-  listArray.push(addFunctionInput.join(" ").replace("\n", ""));
+  listArray.push({
+    task: addFunctionInput.join(" ").replace("\n", ""),
+    done: false
+    });
    }else console.log("error, empty input, please add something")
  
 }
@@ -101,15 +119,15 @@ function add(addFunctionInput, listArray){
 // remove a task from the list of tasks
 function remove(removeFunctionInput, text){
   if(text === 'remove\n'){
-    listArray.pop();
+    listArrayOfObjects.pop();
   }else{
-    if(removeFunctionInput[1] <0 || removeFunctionInput[1] > listArray.length){
+    if(removeFunctionInput[1] <0 || removeFunctionInput[1] > listArrayOfObjects.length){
       console.log("error,this task doesn't exist");
       // so it exit the function and does not execute the next instruction
       return;
     }
      
-    listArray.splice(removeFunctionInput[1]-1, 1);
+    listArrayOfObjects.splice(removeFunctionInput[1]-1, 1);
   }
   
 }
@@ -122,7 +140,7 @@ function edit(editFunctionInput, text){
   // parse the string into an intenger then check if it is a number
   else if(isNaN(parseInt(editFunctionInput[1]))){
     editFunctionInput.shift();
-    listArray.splice(listArray.length-1,1,editFunctionInput.join(" "));
+    listArrayOfObjects.splice(listArrayOfObjects.length-1,1,{task: editFunctionInput.join(" ").replace("\n", ""), done: false});
   }
   else{
      
@@ -131,7 +149,7 @@ function edit(editFunctionInput, text){
     editFunctionInput.shift();
     editFunctionInput.shift();
     
-    listArray.splice(whichTaskToEdit-1,1,editFunctionInput.join(" ").replace("\n", ""))
+    listArrayOfObjects.splice(whichTaskToEdit-1,1,{task: editFunctionInput.join(" ").replace("\n", ""), done: false})
   }
 }
 
