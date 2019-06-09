@@ -155,7 +155,7 @@ function edit(userInput, text){
   }
 }
 
-
+//  change task status from not done to done
 function check(userInput, text){
   if(text === 'check\n'){
     console.log("error, add the # of the task u want to check")
@@ -166,7 +166,7 @@ function check(userInput, text){
 
 }
 
-
+// change task status from done to not done 
 function uncheck(userInput, text){
   if(text === 'uncheck\n'){
     console.log("error, add the # of the task u want to uncheck")
@@ -181,7 +181,7 @@ function uncheck(userInput, text){
 /*a new command, "help", that lists all the possible commands
 */
 function help(){
-  console.log('\nquit\n'+'hello\n'+'list\n'+'add\n'+'remove\n');
+  console.log('\nquit\n'+'hello\n'+'list\n'+'add\n'+'remove\n'+'edit\n'+'check\n'+'uncheck\n');
 }
 
 
