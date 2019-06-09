@@ -44,10 +44,30 @@ function onDataReceived(text) {
   else if(text === 'help\n'){
     help();
   }
+  else if(text === 'list\n'){
+    list();
+  }
   else
     unknownCommand(text);
   
 }
+
+
+function list(){
+  var listArray=[
+    "get this thing",
+    "get the other thing",
+    "get anything"
+  ]
+  for(var i = 0; i<listArray.length; i++){
+    console.log(listArray[i]);
+  }
+}
+
+
+
+
+
 
 /*a new command, "help", that lists all the possible commands
 */
