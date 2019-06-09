@@ -34,7 +34,7 @@ function startApp(name){
  * @returns {void}
  */
 
- 
+const fs = require('fs')
 
 function onDataReceived(text) {
 
@@ -74,6 +74,9 @@ function onDataReceived(text) {
   
 }
 
+
+
+
 // the list of tasks with default values
 
 var listArrayOfObjects= [
@@ -89,8 +92,10 @@ var listArrayOfObjects= [
     task: "get anything",
     done: false
   }
-]
+];
 
+
+ 
 
 // print out the list of tasks
 function list(theList){
@@ -178,6 +183,11 @@ function uncheck(userInput, text){
 }
 
 
+
+
+
+
+
 /*a new command, "help", that lists all the possible commands
 */
 function help(){
@@ -209,14 +219,42 @@ function hello(theText){
 
 
 /**
- * Exits the application
+ * Exits the application and save data
  *
  * @returns {void}
  */
 function quit(){
+  storeData(listArrayOfObjects, 'database.json');
   console.log('Quitting now, goodbye!')
   process.exit();
 }
 
 // The following line starts the application
 startApp("Fadel Ibrahim")
+
+
+
+
+//  save data in database.json when i type exit or quit.
+const storeData = (data, path) => {
+  try {
+    fs.writeFileSync(path, JSON.stringify(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+
+
+//  load data from  database.json
+const loadData = (path) => {
+  try {
+    return fs.readFileSync(path, 'utf8')
+  } catch (err) {
+    console.error(err)
+    return false
+  }
+}
+listArrayOfObjects = JSON.parse(loadData('database.json'));
+ 
+ 
