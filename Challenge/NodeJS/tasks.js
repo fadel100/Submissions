@@ -67,13 +67,15 @@ function onDataReceived(text) {
   
 }
 
-
+// the list of tasks with default values
 var listArray=[
   "get this thing",
   "get the other thing",
   "get anything"
 ];
 
+
+// print out the list of tasks
 function list(theList){
  
   for(var i = 0; i<theList.length; i++){
@@ -81,7 +83,7 @@ function list(theList){
   }
 }
 
-
+// add a task to list of tasks
 function add(addFunctionInput, listArray){
    if(addFunctionInput[1]){
   addFunctionInput.shift();
@@ -91,7 +93,7 @@ function add(addFunctionInput, listArray){
  
 }
 
-
+// remove a task from the list of tasks
 function remove(removeFunctionInput, text){
   if(text === 'remove\n'){
     listArray.pop();
@@ -105,7 +107,7 @@ function remove(removeFunctionInput, text){
 /*a new command, "help", that lists all the possible commands
 */
 function help(){
-  console.log('quit\n'+'hello\n');
+  console.log('\nquit\n'+'hello\n'+'list\n'+'add\n'+'remove\n');
 }
 
 
