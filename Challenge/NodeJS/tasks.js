@@ -1,7 +1,12 @@
 
 const fs = require('fs');
-
-
+// save the path form the command line
+var path;
+if(process.argv[2]){
+  path = process.argv[2];
+}else{
+  path = 'database.json';
+}
 
 //  save data when i type exit or quit.
 const storeData = (data, path) => {
@@ -52,12 +57,12 @@ var listArrayOfObjects= [
  */
 function startApp(name){
   //  if the file i want to load data from doens't exist , i create one and store the default values of listArrayOfObjects in it
-  if(!fs.existsSync('database.json')){
-    storeData(listArrayOfObjects, 'database.json');
+  if(!fs.existsSync(path)){
+    storeData(listArrayOfObjects, path);
     }
 
   // load data from the file when statrting the app
-  listArrayOfObjects = JSON.parse(loadData('database.json'));
+  listArrayOfObjects = JSON.parse(loadData(path));
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', onDataReceived);
@@ -256,7 +261,7 @@ function hello(theText){
  * @returns {void}
  */
 function quit(){
-  storeData(listArrayOfObjects, 'database.json');
+  storeData(listArrayOfObjects, path);
   console.log('Quitting now, goodbye!')
   process.exit();
 }
