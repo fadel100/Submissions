@@ -139,9 +139,9 @@ function onDataReceived(text) {
 function list(theList){
   for(var i = 0; i<theList.length; i++){
     if(theList[i].done){
-      console.log("[✓] "+theList[i].task);
+      console.log(i+1 +" [✓] "+theList[i].task);
     }else{
-      console.log("[ ] "+theList[i].task);
+      console.log(i+1 +" [ ] "+theList[i].task);
     }
      
   }
