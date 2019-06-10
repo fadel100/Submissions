@@ -1,4 +1,45 @@
 
+const fs = require('fs');
+
+
+
+//  save data when i type exit or quit.
+const storeData = (data, path) => {
+  try {
+    fs.writeFileSync(path, JSON.stringify(data))
+  } catch (err) {
+    console.error(err)
+  }
+}
+
+//  load data from  database.json
+const loadData = (path) => {
+  try {
+    return fs.readFileSync(path, 'utf8')
+  } catch (err) {
+    console.error(err)
+    return false
+  }
+}
+
+
+
+
+var listArrayOfObjects= [
+  {
+    task: "get this thing",
+    done: false
+  },
+  {
+    task: "get the other thing",
+    done: true
+  },
+  {
+    task: "get anything",
+    done: false
+  }
+];
+
 /**
  * Starts the application
  * This is the function that is run when the app starts
@@ -10,6 +51,13 @@
  * @returns {void}
  */
 function startApp(name){
+  //  if the file i want to load data from doens't exist , i create one and store the default values of listArrayOfObjects in it
+  if(!fs.existsSync('database.json')){
+    storeData(listArrayOfObjects, 'database.json');
+    }
+
+  // load data from the file when statrting the app
+  listArrayOfObjects = JSON.parse(loadData('database.json'));
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', onDataReceived);
@@ -34,7 +82,7 @@ function startApp(name){
  * @returns {void}
  */
 
-const fs = require('fs')
+// const fs = require('fs')
 
 function onDataReceived(text) {
 
@@ -77,29 +125,13 @@ function onDataReceived(text) {
 
 
 
-// the list of tasks with default values
 
-var listArrayOfObjects= [
-  {
-    task: "get this thing",
-    done: false
-  },
-  {
-    task: "get the other thing",
-    done: true
-  },
-  {
-    task: "get anything",
-    done: false
-  }
-];
 
 
  
 
 // print out the list of tasks
 function list(theList){
- 
   for(var i = 0; i<theList.length; i++){
     if(theList[i].done){
       console.log("[✓] "+theList[i].task);
@@ -233,28 +265,3 @@ function quit(){
 startApp("Fadel Ibrahim")
 
 
-
-
-//  save data in database.json when i type exit or quit.
-const storeData = (data, path) => {
-  try {
-    fs.writeFileSync(path, JSON.stringify(data))
-  } catch (err) {
-    console.error(err)
-  }
-}
-
-
-
-//  load data from  database.json
-const loadData = (path) => {
-  try {
-    return fs.readFileSync(path, 'utf8')
-  } catch (err) {
-    console.error(err)
-    return false
-  }
-}
-listArrayOfObjects = JSON.parse(loadData('database.json'));
- 
- 
