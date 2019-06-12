@@ -118,6 +118,20 @@ app.get('/movies/edit',(req, res) => res.send("asdasd"));
 // delete
 app.get('/movies/delete',(req, res) => res.send("asdasd"));
 
+app.get('/movies/delete/:id', (req, res) => {
+    var id = req.params.id;
+    if(id >= 0 && id < movies.length){
+    movies.splice(id,1);
+    res.send({
+        status: 200,
+        data: movies
+    })
+    }else{
+        res.send({
+            status:404, error:true, message:'the moviedoes not exist'
+        })
+    }
+})
 
 // sort array of objects , doc on mozilla
 app.get('/movies/read/by-date', (req, res)=> res.send({
@@ -136,11 +150,15 @@ app.get('/movies/read/by-rating', (req, res)=> res.send(
     }
 ));
 
+
+
 app.get('/movies/read/by-title', (req, res)=> res.send(
     {
         status: 200,
         data: movies.sort(function(a, b){
-            return (b.title - a.title)
+            var x = a.title.toLowerCase();
+            var y = b.title.toLowerCase();
+            return x < y ? -1 : x > y ? 1 : 0;
         })
     }
 ));
