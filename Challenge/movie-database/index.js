@@ -91,7 +91,7 @@ app.get('/movies/get', (req, res) => res.send({status:200, data: movies }));
 
 app.get('/movies/read/id/:id', (req, res)=>{
     var id = req.params.id;
-    if(id >0 && id < movies.length ){
+    if(id >=0 && id < movies.length ){
         res.send(
             {
                 status: 200,
