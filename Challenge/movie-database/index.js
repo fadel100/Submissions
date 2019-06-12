@@ -128,7 +128,7 @@ app.get('/movies/delete/:id', (req, res) => {
     })
     }else{
         res.send({
-            status:404, error:true, message:'the moviedoes not exist'
+            status:404, error:true, message:'the movie '+id+ ' does not exist'
         })
     }
 })
