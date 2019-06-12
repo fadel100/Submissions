@@ -65,6 +65,32 @@ const movies = [
 app.get('/movies/add',(req, res) => res.send("asdasd"));
 // read
 app.get('/movies/get', (req, res) => res.send({status:200, data: movies }));
+
+
+
+app.get('/movies/read/id/:id', (req, res)=>{
+    var id = req.params.id;
+    if(id >0 && id < movies.length ){
+        res.send(
+            {
+                status: 200,
+                data: movies[id]
+            }
+        )
+    }else{
+        res.send(
+            {
+                status: 404,
+                error: true,
+                message: 'the movie '+id+' does not exist'
+            }
+        )
+    }
+});
+
+
+
+
 // update
 app.get('/movies/edit',(req, res) => res.send("asdasd"));
 // delete
