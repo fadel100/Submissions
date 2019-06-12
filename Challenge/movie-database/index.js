@@ -62,7 +62,28 @@ const movies = [
 
 
 // create
-app.get('/movies/add',(req, res) => res.send("asdasd"));
+app.get('/movies/add?',(req, res) => res.send("asdasd"));
+
+app.get('/movies/create', (req, res) =>{
+    var queryTitle = req.query.title;
+    var queryYear = req.query.year;
+    var queryRating = req.query.rating;
+
+    if(queryRating == "")
+        queryRating = 4;
+
+    if(!queryTitle == "" && !queryYear == "" && !queryYear.length != 4 && !isNaN(queryYear)){
+    movies.push({
+        title: queryTitle,
+        year: queryYear,
+        rating: queryRating
+    })
+    res.send({status:200, data: movies })
+    }else{
+        res.send({status:403, error:true, message:'you cannot create a movie without providing a title and a year'})
+    }
+})
+
 // read
 app.get('/movies/get', (req, res) => res.send({status:200, data: movies }));
 
@@ -93,6 +114,7 @@ app.get('/movies/read/id/:id', (req, res)=>{
 
 // update
 app.get('/movies/edit',(req, res) => res.send("asdasd"));
+
 // delete
 app.get('/movies/delete',(req, res) => res.send("asdasd"));
 
@@ -101,7 +123,7 @@ app.get('/movies/delete',(req, res) => res.send("asdasd"));
 app.get('/movies/read/by-date', (req, res)=> res.send({
     status: 200,
     data: movies.sort(function(a, b){
-        return (b.year - a.year)
+        return (a.year - b.year)
     })
 }));
 
