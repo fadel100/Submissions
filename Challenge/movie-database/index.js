@@ -71,6 +71,32 @@ app.get('/movies/edit',(req, res) => res.send("asdasd"));
 app.get('/movies/delete',(req, res) => res.send("asdasd"));
 
 
+// sort array of objects , doc on mozilla
+app.get('/movies/read/by-date', (req, res)=> res.send({
+    status: 200,
+    data: movies.sort(function(a, b){
+        return (b.year - a.year)
+    })
+}));
+
+app.get('/movies/read/by-rating', (req, res)=> res.send(
+    {
+        status:200,
+        data: movies.sort(function(a, b){
+            return (b.rating - a.rating)
+        })
+    }
+));
+
+app.get('/movies/read/by-title', (req, res)=> res.send(
+    {
+        status: 200,
+        data: movies.sort(function(a, b){
+            return (b.title - a.title)
+        })
+    }
+));
+
 // for later use
 // app.get('/movies/get', (req, res)=>{
 //     for(let i=0;i<movies.length;i++){
