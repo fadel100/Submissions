@@ -115,6 +115,24 @@ app.get('/movies/read/id/:id', (req, res)=>{
 // update
 app.get('/movies/edit',(req, res) => res.send("asdasd"));
 
+app.get('/movies/update/:id', (req, res) => {
+    var id = req.params.id;
+    var queryTitle = req.query.title;
+    var queryYear = req.query.year;
+    var queryRating = req.query.rating;
+
+    if(queryTitle != undefined && queryTitle != "")
+        movies[id].title = queryTitle;
+    if(queryYear != undefined && queryYear != "")
+        movies[id].year = queryYear;
+    if(queryRating != undefined && queryRating != "")
+        movies[id].rating = queryRating;
+
+    res.send(movies[id])
+})
+
+
+
 // delete
 app.get('/movies/delete',(req, res) => res.send("asdasd"));
 
