@@ -75,8 +75,8 @@ app.get('/movies/create', (req, res) =>{
     if(!queryTitle == "" && !queryYear == "" && !queryYear.length != 4 && !isNaN(queryYear)){
     movies.push({
         title: queryTitle,
-        year: queryYear,
-        rating: queryRating
+        year: queryYear*1,
+        rating: queryRating*1
     })
     res.send({status:200, data: movies })
     }else{
